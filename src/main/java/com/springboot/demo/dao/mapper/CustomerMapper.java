@@ -2,9 +2,7 @@ package com.springboot.demo.dao.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.springframework.jdbc.core.RowMapper;
-
 import com.springboot.demo.dto.CustomerDto;
 
 public class CustomerMapper implements RowMapper<CustomerDto> {

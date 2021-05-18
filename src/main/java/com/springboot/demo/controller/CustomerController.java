@@ -2,7 +2,6 @@ package com.springboot.demo.controller;
 
 import java.net.URI;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.springboot.demo.dto.CustomerDto;
 import com.springboot.demo.service.CustomerService;
 
@@ -29,14 +27,14 @@ public class CustomerController {
 
 	@GetMapping
 	public ResponseEntity<List<CustomerDto>> getCustomers() {
-		List customers = this.customerService.getCustomers();
+		List<CustomerDto> customers = this.customerService.getCustomers();
 		return new ResponseEntity(customers, HttpStatus.OK);
 	}
 
 	@GetMapping({ "/{id}" })
 	public ResponseEntity<Object> getCustomerById(@PathVariable int id) {
 		try {
-			CustomerDto cutomer = this.customerService.getCustomer(id);
+			CustomerDto cutomer = customerService.getCustomer(id);
 			return new ResponseEntity(cutomer, HttpStatus.OK);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -55,7 +53,7 @@ public class CustomerController {
 		}
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{first_name}")
-				.buildAndExpand(new Object[] { customer.getFirstName() }).toUri();
+				.buildAndExpand(customer.getFirstName()).toUri();
 		return ResponseEntity.created(location).body(location);
 	}
 

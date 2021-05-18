@@ -1,7 +1,6 @@
 package com.springboot.demo.dao;
 
 import java.util.List;
-
 import com.springboot.demo.dto.CustomerDto;
 
 public interface CustomerDao {
