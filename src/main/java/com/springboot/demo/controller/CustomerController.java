@@ -47,14 +47,14 @@ public class CustomerController {
 		if ((customer.getFirstName() == null) || (customer.getLastName() == null) || (customer.getEmail() == null))
 			return ResponseEntity.badRequest().body("Please try with valid customer object");
 		try {
-			this.customerService.addCustomer(customer);
+			int key = customerService.addCustomer(customer);
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{first_name}")
+					.buildAndExpand(key).toUri();
+			return ResponseEntity.created(location).body(location);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Error Occured when create the customer");
 		}
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{first_name}")
-				.buildAndExpand(customer.getFirstName()).toUri();
-		return ResponseEntity.created(location).body(location);
 	}
 
 	@DeleteMapping({ "/{id}" })

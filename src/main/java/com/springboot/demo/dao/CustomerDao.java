@@ -9,7 +9,7 @@ public interface CustomerDao {
 
 	public abstract CustomerDto getCustomer(int paramInt);
 
-	public abstract void addCutomer(CustomerDto paramCustomerDto);
+	public abstract int addCutomer(CustomerDto paramCustomerDto);
 
 	public abstract void deleteCustomer(CustomerDto paramCustomerDto);
 

@@ -9,7 +9,7 @@ public interface CustomerService {
 
 	public abstract CustomerDto getCustomer(int paramInt);
 
-	public abstract void addCustomer(CustomerDto paramCustomerDto);
+	public abstract int addCustomer(CustomerDto paramCustomerDto);
 
 	public abstract void deleteCustomer(CustomerDto paramCustomerDto);
 

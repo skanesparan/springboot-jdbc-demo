@@ -13,23 +13,23 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDao customerDao;
 
 	public List<CustomerDto> getCustomers() {
-		return this.customerDao.getCustomerRecords();
+		return customerDao.getCustomerRecords();
 	}
 
 	public CustomerDto getCustomer(int id) {
-		return this.customerDao.getCustomer(id);
+		return customerDao.getCustomer(id);
 	}
 
-	public void addCustomer(CustomerDto cutomer) {
-		this.customerDao.addCutomer(cutomer);
+	public int addCustomer(CustomerDto cutomer) {
+		return customerDao.addCutomer(cutomer);
 	}
 
 	public void deleteCustomer(CustomerDto cutomer) {
-		this.customerDao.deleteCustomer(cutomer);
+		customerDao.deleteCustomer(cutomer);
 	}
 
 	public void updateCustomer(int id, CustomerDto cutomer) {
-		this.customerDao.updateCustomer(id, cutomer);
+		customerDao.updateCustomer(id, cutomer);
 	}
 
 }
